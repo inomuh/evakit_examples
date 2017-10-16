@@ -2,26 +2,21 @@
 from evakit import *
 from Tkinter import *
 
-
-        
-
-
-
 if __name__ == '__main__':
     try:
         rospy.init_node('example_node', anonymous=True)
         rate = rospy.Rate(10)  # 10hz
 
         my_bumper = bumper()
+
         my_ir0 = ir(0)
         my_ir1 = ir(1)
-
 
         my_sonar0 = sonar(0)
         my_sonar1 = sonar(1)
 
-
         my_motor = motor()
+
         my_odometer = odom()
         
         #my_motor.stop() #if you want to stop motors
@@ -58,7 +53,6 @@ if __name__ == '__main__':
         
         Sonar1_range = IntVar()
         label_Sonar1_range = Label(root, text="Sonar1 range=").grid(row=3, column=0, sticky=E)
-
         
         state_Bumper0 = IntVar()
         label_state_Bumper0 = Label(root, text="Bumper0 state=").grid(row=4, column=0, sticky=E)
@@ -74,10 +68,8 @@ if __name__ == '__main__':
         Sonar0_ok = StringVar()
         Sonar1_ok = StringVar()
 
-
         ir0_ok = StringVar()
         ir1_ok = StringVar()
-
 
         label_Odometer_pos_x = Label(root, text="pos_x=").grid(row=5, column=0, sticky=E)
         label_Odometer_pos_y = Label(root, text="pos_y=").grid(row=6, column=0, sticky=E)
@@ -153,14 +145,11 @@ if __name__ == '__main__':
             rospy.loginfo("w orientation of robot=" + str(odometer_ori_w))
             rospy.loginfo("---------------------------------")
     
-            
             IR0_range.set(range_ir0)
             IR1_range.set(range_ir1)
 
-
             Sonar0_ok.set(str(my_sonar0.is_it_work()))
             Sonar1_ok.set(str(my_sonar1.is_it_work()))
-
 
             ir0_ok.set(str(my_ir0.is_it_work()))
             ir1_ok.set(str(my_ir1.is_it_work()))
@@ -168,9 +157,7 @@ if __name__ == '__main__':
             Sonar0_range.set(range_sonar0)
             Sonar1_range.set(range_sonar1)
             
-            
             state_Bumper0.set(state_bumper0)
-
             
             Odometer_pos_x.set(odometer_pos_x)
             Odometer_pos_y.set(odometer_pos_y)
@@ -183,7 +170,6 @@ if __name__ == '__main__':
             root.update()
             rate.sleep()
             #root.mainloop()
-            
 
     except rospy.ROSInterruptException:
         pass
